@@ -402,6 +402,9 @@ case $cmd in
 			ln -s "$folder/cli-argsConfig.txt" "$folder/server/cli-argsConfig.txt"
 		fi
 
+		# Edge-case for ScriptCaller.sh where dotnet exists but TML logs don't yet
+		export SKIP_DOTNET_LOGCHECK=1
+
 		;&
 	start)
 		if ! [[ -f "$folder/server/start-tModLoaderServer.sh" ]]; then

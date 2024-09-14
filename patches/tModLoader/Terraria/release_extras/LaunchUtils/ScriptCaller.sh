@@ -41,10 +41,10 @@ echo "Verifying .NET...."  2>&1 | tee -a "$LogFile"
 echo "This may take a few moments."
 
 # Get Dotnet Version expecting to have installed
-source ./DotNetVersion.sh
+. ./DotNetVersion.sh
 
 # Attempt to fix first time Crash To Desktop due to dotnet install failure
-if [[ ! -f "$LaunchLogs/client.log" && ! -f "$LaunchLogs/server.log" ]]; then
+if [[ ! -f "$LaunchLogs/client.log" && ! -f "$LaunchLogs/server.log" && -z "$SKIP_DOTNET_LOGCHECK" ]]; then
 	echo "Last Run Attempt Failed to Start tModLoader. Deleting dotnet_dir and resetting"  2>&1 | tee -a "$LogFile"
 	rm -rf "$dotnet_dir"
 	mkdir "$dotnet_dir"
