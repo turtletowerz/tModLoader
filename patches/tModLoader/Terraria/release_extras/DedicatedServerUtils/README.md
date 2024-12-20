@@ -77,6 +77,9 @@ The steam workshop does not use mod names to identify mods, so you must create a
    * To attach to the server console run `docker exec -it tml attach`. To detach from the console press `Ctrl-P Ctrl-Q` to avoid shutting down or `Ctrl-C` to detach and shutdown the server
    * This command will create the `Mods` and `Worlds` directories if they don't already exist
 
+### Running Commands
+To run commands inside the container, run `docker exec -it tml execute "YOUR COMMAND"`. An example hello world would be `docker exec -it tml execute "say Hello World!"`. The quotes are required around the entire command because tmux can only accept one argument to be passed, otherwise the command is sent as a single word without spaces
+
 ### Updating
 To update, download the newest container and rebuild it using `docker compose build` to update tModLoader. Mods will be updated as well. If the container doesn't rebuild you can force rebuilding by running `docker compose build --no-cache`
 
